@@ -44,7 +44,7 @@ public class User {
 
     @Column
     @NotNull
-    Boolean isEnabled;
+    public Boolean isEnabled;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     public List<UserRole> userRoles;
