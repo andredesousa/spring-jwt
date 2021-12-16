@@ -1,6 +1,7 @@
 package app.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 
@@ -37,7 +38,7 @@ public class AuthServiceTests {
 
     @Test
     @DisplayName("#login returns the user session")
-    void login() {
+    void login_returns_session() {
         AuthDto credentials = new AuthDto("username", "password");
         UserDetailsDto userSession = new UserDetailsDto(credentials.username, credentials.password, "", List.of());
         Authentication auth = new UsernamePasswordAuthenticationToken(userSession, "", List.of());
@@ -51,13 +52,13 @@ public class AuthServiceTests {
 
     @Test
     @DisplayName("#refresh returns a new jwt token")
-    void refresh() {
+    void refresh_returns_token() {
         assertThat(authService.refresh("username", List.of())).isInstanceOf(String.class);
     }
 
     @Test
     @DisplayName("#validate returns user credentials")
-    void validate() {
+    void validate_returns_credentials() {
         Authentication auth = new UsernamePasswordAuthenticationToken("username", null, List.of());
         String bearerToken =
             "Bearer eyJhbGciOiJIUzUxMiJ9." +
@@ -65,5 +66,11 @@ public class AuthServiceTests {
             "KR1DBB-ui8ycBhIcRhzOwhcqCNC2DTy5aDYlKeARg1_I0-Aa_KiBHvfZEJbsH4oO3vQxn5yaHmnxtIrlJOtoiQ";
 
         assertThat(authService.validate(bearerToken)).isEqualTo(auth);
+    }
+
+    @Test
+    @DisplayName("#validate returns an exception")
+    void validate_returns_exception() {
+        assertThatIllegalArgumentException().isThrownBy(() -> authService.validate(null));
     }
 }

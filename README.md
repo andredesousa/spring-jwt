@@ -29,7 +29,7 @@ You can use the following docker command:
 docker run -d -p 5432:5432 -e POSTGRES_DB=spring -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret postgres
 ```
 
-The project supports database migrations via [Flyway](https://flywaydb.org/).
+The project supports database migrations via [Flyway](https://flywaydb.org/) and it uses [Lombok](https://projectlombok.org/).
 
 ## Project structure
 
