@@ -95,7 +95,7 @@ You can see the HTML coverage report opening the [index.html](build/reports/jaco
 
 Integration tests determine if independently developed units of software work correctly when they are connected to each other.
 
-Use `./gradlew integrationTest` to execute the integration tests via [JUnit 5](https://junit.org/junit5/), [Testcontainers](https://www.testcontainers.org/) and [AssertJ](https://assertj.github.io/doc/).
+Use `./gradlew integrationTest` to execute the integration tests via [JUnit 5](https://junit.org/junit5/), [Mockito](https://site.mockito.org/) and [AssertJ](https://assertj.github.io/doc/).
 Use `./gradlew integrationTest -t` to keep executing your tests while watching for file changes in the background.
 You can see the HTML report opening the [index.html](build/reports/tests/integrationTest/index.html) file in your web browser.
 
