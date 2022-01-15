@@ -49,7 +49,6 @@ public class AuthControllerITests {
 
         MvcResult response = mockMvc
                 .perform(post("/login")
-                        .header(AUTHORIZATION, bearerToken)
                         .content(objectMapper.writeValueAsString(auth)).contentType(APPLICATION_JSON))
                 .andReturn();
 
